@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Airbnb Login</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <script type="text/babel" defer>
+    class Profile extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          name: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+      }
+
+      handleChange(event) {
+        this.setState({
+          name: event.target.value
+        });
+      }
+
+      render() {
+        if (this.state.name.toLowerCase() === "draymond green") {
+          return (
+            <p>You have been logged out</p>
+          )
+        } else {
+          return (
+            <form>
+              <label>Name: 
+                <input value={this.state.name} onChange={this.handleChange} />
+              </label>
+            </form>
+          )
+        }
+      }
+    }
+
+    class Application extends React.Component {
+      render() {
+        return (
+          <div>
+            <header>
+              <h1>Airbnb</h1>
+            </header>
+            <section id="content">
+                <h2>Profile</h2>
+              <Profile />
+              <blockquote>"If you type Draymond Green into Airbnb, that [expletive] will log off automatically" -Dave Chappelle</blockquote>
+            </section>
+            <footer>
+              This is a joke site.
+            </footer>
+          </div>
+        )
+      }
+    }
+    
+    ReactDOM.render(<Application />, document.getElementById('app'));
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    footer {
+      margin: 100px 0 0 0;
+    }
+    
+    #app {
+      min-width: 300px;
+      width: 100%;
+      max-width: 1000px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
